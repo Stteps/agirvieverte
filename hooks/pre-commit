@@ -1,0 +1,6 @@
+#!/bin/bash
+echo 'pre-commit hook starting'
+
+cd docker/development/
+sudo docker compose exec -T app pre-commit install
+sudo docker compose exec -T app pre-commit run --all-files

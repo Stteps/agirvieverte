@@ -1,0 +1,8 @@
+#about-banner {
+  background-image: url("../../assets/images/about_banner.jpg");
+  text-shadow: 1px 1px 2px black;
+}
+
+#about-banner .backdrop-filter {
+  backdrop-filter: grayscale(50%);
+}

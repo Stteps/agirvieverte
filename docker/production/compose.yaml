@@ -1,0 +1,80 @@
+version: '3.8'
+
+volumes:
+  agirvieverte-database-data:
+  agirvieverte-static:
+  agirvieverte-media:
+
+services:
+  # Postgresql Database
+  agirvieverte-database:
+    image: postgres:15-alpine
+    restart: unless-stopped
+    container_name: agirvieverte-database
+    env_file:
+      - .env
+    ports:
+      - 5432:5432
+    volumes:
+      - ./database/init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
+      - agirvieverte-database-data:/var/lib/postgresql/data
+
+  # Django app
+  agirvieverte-app:
+    image: spetiot/agirvieverte:latest
+    container_name: agirvieverte-app
+    env_file: &env
+      - .env
+    volumes: &vol
+      - /var/www/static/agirvieverte/:${STATIC_ROOT}:rw
+      - /var/www/media/agirvieverte/:${MEDIA_ROOT}:rw
+
+  # Gunicorn WSGI server
+  agirvieverte-wsgi:
+    image: spetiot/agirvieverte:latest
+    command: start-gunicorn-server.sh
+    restart: unless-stopped
+    container_name:  agirvieverte-wsgi
+    env_file: *env
+    volumes: *vol
+    depends_on:
+      -  agirvieverte-app
+    ports:
+      - "8000:8000"
+    expose:
+      - "8000"
+    
+  # Daphne ASGI server
+  agirvieverte-asgi:
+    image: spetiot/agirvieverte:latest
+    command: start-daphne-server.sh
+    restart: unless-stopped
+    container_name: agirvieverte-asgi
+    env_file: *env
+    volumes: *vol
+    depends_on:
+      - agirvieverte-app
+    ports:
+      - "8001:8001"
+    expose:
+      - "8001"
+
+  # Redis Broker
+  agirvieverte-broker:
+    image: redis:7-alpine
+    restart: unless-stopped
+    container_name: agirvieverte-broker
+    ports:
+      - "6379"
+
+  # Celery Worker
+  magi-studio-worker:
+    image: spetiot/agirvieverte:latest
+    command: start-celery-worker.sh
+    restart: unless-stopped
+    container_name: magi-studio-worker
+    env_file: *env
+    volumes: *vol
+    depends_on:
+      - agirvieverte-broker
+      - agirvieverte-app

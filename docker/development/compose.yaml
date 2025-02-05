@@ -1,0 +1,88 @@
+version: '3.8'
+
+volumes:
+  agirvieverte-database-data:
+  agirvieverte-media:
+
+services:
+  # Postgresql Database
+  database:
+    image: postgres:15-alpine
+    restart: unless-stopped
+    container_name: postgresql
+    env_file:
+      - .env
+    # Optional: Map the container port to a host port to be able to connect with a local db client 
+    ports:
+      - 5432:5432
+    volumes:
+      - ./database/init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
+      - agirvieverte-database-data:/var/lib/postgresql/data
+
+  # Frontend app (static files)
+  frontend:
+    image: webpack
+    restart: unless-stopped
+    container_name: webpack
+    build: 
+      context: ../../
+      dockerfile: ./docker/development/frontend/Dockerfile
+    env_file:
+      - .env
+    ports:
+      - 8080:8080
+    volumes:
+      - ../../frontend:/frontend
+
+  # Django app
+  app:
+    image: django
+    restart: unless-stopped
+    container_name: django
+    build: &app
+      context: ../../
+      dockerfile: ./docker/development/app/Dockerfile
+    env_file: &env
+      - .env
+    depends_on:
+      - database
+      - frontend
+    volumes: &code
+      - ../../:/code
+      - agirvieverte-media:/var/www/media/
+      - ../../.git:/code/.git
+    ports:
+      - 8000:8000
+
+  # Redis Broker
+  broker:
+    image: redis:7-alpine
+    restart: unless-stopped
+    container_name: redis
+    ports:
+      - 6379:6379
+    depends_on:
+      - database
+
+  # Celery Worker
+  worker:
+    image: celery
+    restart: unless-stopped
+    container_name: celery
+    build: *app
+    command: start-celery-worker.sh
+    env_file: *env
+    volumes: *code
+    depends_on:
+      - database
+      - broker
+      - app
+  
+  git-hooks:
+    container_name: git-hooks
+    build:
+      context: ../../
+      dockerfile: ./docker/development/git-hooks/Dockerfile
+    volumes:
+      - ../../.git:/tmp/.git
+      - ../../hooks:/tmp/hooks

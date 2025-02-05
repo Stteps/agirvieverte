@@ -1,0 +1,18 @@
+{
+    "extends": "stylelint-config-standard-scss",
+    "rules": {
+        "property-no-unknown": [
+            true,
+            {
+                "ignoreProperties": ["icon-font", "primary"]
+            }
+        ],
+        "selector-pseudo-class-no-unknown": [
+            true,
+            {
+              "ignorePseudoClasses": ["export"]
+            }
+        ],
+        "font-family-no-missing-generic-family-keyword": false
+    }
+}

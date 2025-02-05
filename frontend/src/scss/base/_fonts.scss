@@ -1,0 +1,91 @@
+// -----------------------------------------------------------------------------
+// This file contains all @font-face declarations, if any.
+// -----------------------------------------------------------------------------
+
+/* OpenSans global fonts for the whole website
+    ========================================================================== */
+
+/**
+* Regular
+*/
+@font-face {
+    font-family: "Open Sans Regular";
+    src: url("../assets/fonts/Open_Sans/static/OpenSans-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  /**
+  * Bold
+  */
+  @font-face {
+    font-family: "Open Sans Bold";
+    src: url("../assets/fonts/Open_Sans/static/OpenSans-Bold.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  /**
+  * Bold Italic
+  */
+  @font-face {
+    font-family: "Open Sans Bold Italic";
+    src: url("../assets/fonts/Open_Sans/static/OpenSans-BoldItalic.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  /**
+  * Italic
+  */
+  @font-face {
+    font-family: "Open Sans Italic";
+    src: url("../assets/fonts/Open_Sans/static/OpenSans-Italic.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+
+/* Poppins global fonts for the whole website
+    ========================================================================== */
+
+/**
+* Regular
+*/
+@font-face {
+    font-family: "Poppins Regular";
+    src: url("../assets/fonts/Poppins/Poppins-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  /**
+  * Bold
+  */
+  @font-face {
+    font-family: "Poppins Bold";
+    src: url("../assets/fonts/Poppins/Poppins-Bold.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  /**
+  * Bold Italic
+  */
+  @font-face {
+    font-family: "Poppins Bold Italic";
+    src: url("../assets/fonts/Poppins/Poppins-BoldItalic.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  /**
+  * Italic
+  */
+  @font-face {
+    font-family: "Poppins Italic";
+    src: url("../assets/fonts/Poppins/Poppins-Italic.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
+  

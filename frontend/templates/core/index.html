@@ -1,0 +1,154 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load i18n %}
+
+{% load render_bundle from webpack_loader %}
+
+{% block title %}{% endblock title %}
+
+{% block specific_styles %}
+    {% render_bundle 'index' 'css' %}
+{% endblock specific_styles %}
+
+{% block specific_scripts %}
+    <script>
+        {% autoescape off %}
+            const LANDING_BANNER = "{% get_media_prefix %}{{ banner_path }}"
+            const PROJECTS = {{ projects }}
+        {% endautoescape %}
+    </script>
+
+    {% render_bundle 'index' 'js' %}
+{% endblock specific_scripts %}
+
+{% block content %}
+    <div class = "min-vh-100">
+        <div class = "index-section d-flex" id = "landing">
+            <div class = "container d-flex flex-column justify-content-evenly">
+                <div class = "text-light mx-auto p-3">
+                    <h1>Agir Vie Verte</h1>
+                    <p class = "fs-5">Nous agissons pour un futur encore plus responsable</p>
+                    <p class = "fs-5">
+                        Notre association est une communauté dynamique de personnes partageant 
+                        les mêmes idéaux. Rencontrez des individus inspirants, tissez des liens 
+                        durables et contribuez à une cause qui nous concerne tous.
+                    </p>
+                </div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+    <div class = "bg-white py-3">
+        <div class = "container py-3">
+            <h3 class = "text-center">Notre expertise</h3>
+            <div class = "border border-3 border-primary mx-auto mt-2 mb-3 w-25"></div>
+            <div class = "row row-cols-1 row-cols-md-4 g-4 justify-content-center text-center my-3">
+                <div class = "col">
+                    <div class = "card rounded bg-light h-100">
+                        <img src = {% static "images/education_thumbnail.png" %} class = "card-img-top" alt = "Education thumbnail">
+                        <div class = "card-body">
+                            <h5 class = "card-title fw-bold">Education</h5>
+                            <p class = "card-text fs-5">
+                                Nous nous mobilisons pour la construction des écoles et collèges, de même que la reconstruction 
+                                des écoles et collèges délabrés pour assurer une meilleure éducation
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class = "col">
+                    <div class = "card rounded bg-light h-100">
+                        <img src = {% static "images/recycling_thumbnail.png" %} class = "card-img-top" alt = "Recycling thumbnail">
+                        <div class = "card-body">
+                            <h5 class = "card-title fw-bold">Recyclage</h5>
+                            <p class = "card-text fs-5">
+                                Nous encourageons le développement de technologies de recyclage innovantes et efficaces, 
+                                visant à maximiser le taux de recyclage tout en minimisant l'impact environnemental.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class = "col">
+                    <div class = "card rounded bg-light h-100">
+                        <img src = {% static "images/agriculture_thumbnail.png" %} class = "card-img-top" alt = "Agriculture thumbnail">
+                        <div class = "card-body">
+                            <h5 class = "card-title fw-bold">Agriculture</h5>
+                            <p class = "card-text fs-5">
+                                Nous contribuons à la transition vers des systèmes agricoles qui préservent la biodiversité, 
+                                pour minimiser les impacts environnementaux, et garantir la sécurité alimentaire
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class = "col">
+                    <div class = "card rounded bg-light h-100">
+                        <img src = {% static "images/health_thumbnail.png" %} class = "card-img-top" alt = "Health thumbnail">
+                        <div class = "card-body">
+                            <h5 class = "card-title fw-bold">Santé</h5>
+                            <p class = "card-text fs-5">
+                                Nous avons la mission d'accompagner la création des produits de beauté respectueux de 
+                                l'environnement tout en privilégiant la santé et la beauté des individus
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class = "col">
+                    <div class = "card rounded bg-light h-100">
+                        <img src = {% static "images/renewable_thumbnail.png" %} class = "card-img-top" alt = "Renewable Energies thumbnail">
+                        <div class = "card-body">
+                            <h5 class = "card-title fw-bold">Énergies renouvelables</h5>
+                            <p class = "card-text fs-5">
+                                Notre mission est de promouvoir, soutenir et accélerer la transition vers un système 
+                                énergétique durable et respectueux de l'environnement, en mettant l'accent sur 
+                                l'utilisation des sources d'énergie renouvelable
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class = "col">
+                    <div class = "card rounded bg-light h-100">
+                        <img src = {% static "images/digital_thumbnail.png" %} class = "card-img-top" alt = "Digital thumbnail">
+                        <div class = "card-body">
+                            <h5 class = "card-title fw-bold">Numérique</h5>
+                            <p class = "card-text fs-5">
+                                Nous encourageons les concepteurs, développeurs et fabricants d'équipements 
+                                numériques à intégrer des principes d'éco-conception et la facilité de recyclage, dans 
+                                le processus de développement
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class = "col">
+                    <div class = "card rounded bg-light h-100">
+                        <img src = {% static "images/housing_thumbnail.png" %} class = "card-img-top" alt = "Eco-housing thumbnail">
+                        <div class = "card-body">
+                            <h5 class = "card-title fw-bold">Éco-habitat</h5>
+                            <p class = "card-text fs-5">
+                                Nous organisons des ateliers, des conférences et des séminaires pour sensibiliser les 
+                                professionnels du bâtiment, les entrepreneurs et le grand public aux principes de la 
+                                construction écologique
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class = "py-3">
+        <div class = "container py-3">
+            <h3 class = "text-white fw-bold">Nos projets</h3>
+            <div class = "border border-3 border-primary mt-2 mb-3 w-25"></div>
+            <div class = "bg-dark bg-opacity-50 m-3 p-3 text-center">
+                <div id = "projects-app"></div>
+            </div>
+        </div>
+    </div> 
+    <div class = "p-3 text-center" style="background-color: #fafbed">
+        <h3 class = "fw-bold">Commencez maintenant</h3>
+        <p>
+            Rejoignez le mouvement pour un Avenir Durable ! Ensemble, nous povons être une force pour des changements 
+            positifs et durables. Nesitez pas a nous contactez.
+        </p>
+        <button class = "btn btn-lg btn-primary text-white my-3 px-5"><i class="bi bi-telephone-fill"></i>&nbsp;Contactez-nous</button>
+    </div>
+{% endblock content %}

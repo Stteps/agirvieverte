@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load i18n %}
+
+{% load render_bundle from webpack_loader %}
+
+{% block title %}{{ article.title }}{% endblock title %}
+
+{% block specific_styles %}
+    {% render_bundle 'about' 'css' %}
+{% endblock specific_styles %}
+
+{% block specific_scripts %}
+    {% render_bundle 'about' 'js' %}
+{% endblock specific_scripts %}
+
+{% block content %}
+    <div class = "text-center text-light py-5 position-relative" id = "blog-banner">
+        <div class = "backdrop-filter position-absolute top-0 bottom-0 start-0 end-0"></div>
+        <h1>{{ article.title }}</h1>
+    </div>
+    <div class = "bg-white py-5">
+        <div class = "container">
+            <small class = "text-muted">{{ article.created_at }}</small>
+        </div>
+    </div>
+{% endblock content %}

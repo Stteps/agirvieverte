@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load i18n %}
+
+{% load render_bundle from webpack_loader %}
+
+{% block title %}À propos{% endblock title %}
+
+{% block specific_styles %}
+    {% render_bundle 'about' 'css' %}
+{% endblock specific_styles %}
+
+{% block specific_scripts %}
+    {% render_bundle 'about' 'js' %}
+{% endblock specific_scripts %}
+
+{% block content %}
+    <div class = "text-center text-light py-5 position-relative" id = "about-banner">
+        <div class = "backdrop-filter position-absolute top-0 bottom-0 start-0 end-0"></div>
+        <h1>A PROPOS DE NOUS</h1>
+    </div>
+    <div class = "bg-white py-5">
+        <div class = "container">
+            <div class = "row">
+                <div class = "col-lg-7 text-center">
+                    <h2>Agir Vie Verte</h2>
+                    <div class = "border border-3 border-primary mx-auto mt-2 mb-3 w-25"></div>
+                    <p>
+                        Notre histoire commence avec une passion commune pour la préservation de notre planète. 
+                        Fondée le 31 Mars 2021 à Nice (France), AGIR VIE VERTE s'est engagée à créer un impact 
+                        positif significatif sur l'environnement et à inspirer le changement vers un avenir 
+                        durable.
+                    </p>
+                    <p>
+                        Protéger et restaurer l'équilibre de la nature est notre mission capitale. Nous croyons en 
+                        un monde où chaque individu, chaque communauté et chaque entreprise s'engage activement à 
+                        préserver notre précieux héritage naturel. Nous recherchons activement des bénévoles motivés 
+                        pour nous aider à trouver le financement nécessaire à la réalisation de ce projet. 
+                        Que vous ayez des compétences en collecte de fonds, en recherche de subventions, en marketing 
+                        ou en communication, votre expertise sera précieuse pour atteindre notre objectif commun.
+                    </p>
+                    <p>
+                        En participant à cette mission, vous pourrez mettre à profit votre créativité, votre 
+                        dynamisme et votre détermination pour sensibiliser et convaincre des partenaires, des 
+                        entreprises et des donateurs de soutenir notre cause. Vous aurez l'opportunité de travailler 
+                        en étroite collaboration avec notre équipe et de contribuer activement à la construction 
+                        d'écoles respectueuses de l'environnement en Afrique.
+                    </p>
+                    <p>
+                        Que vous soyez étudiant(e), professionnel(le) ou retraité(e), votre engagement envers ce 
+                        projet aura un impact réel et durable sur la vie des enfants africains et sur la préservation 
+                        de notre planète.</br> 
+                        Si vous souhaitez vous impliquer dans notre projet de "Reconstruction durable des écoles en 
+                        Afrique" et apporter votre contribution à cette noble cause, contactez-nous dès maintenant. 
+                        Nous serions ravis d'échanger avec vous et de discuter des différentes façons dont vous 
+                        pouvez vous impliquer.
+                    </p>
+                </div>
+                <div class = "col-lg-5">
+                    <img src = {% static "images/about_main_picture.jpg" %} class = "w-100" alt = "About main picture" />
+                </div>
+            </div>
+            <div class="py-3 px-5">
+                <h2 class = "text-center">Notre mission</h2>
+                <div class = "border border-3 border-primary mx-auto mt-2 mb-3 w-25"></div>
+                <p>
+                    <b>1. Sensibilisation et Éducation :</b> Promouvoir la sensibilisation à l'environnement à travers des ateliers, 
+                    des conférences et des campagnes d'information.
+                </p>
+                <p>
+                    <b>2. Protection de la Biodiversité :</b> Protéger et restaurer les habitats naturels et les espèces menacées 
+                    par des actions de conservation.
+                </p>
+                <p>
+                    <b>3. Promotion des Énergies Renouvelables :</b> Encourager l'utilisation des énergies renouvelables et des 
+                    technologies vertes pour réduire l'empreinte carbone.
+                </p>
+                <p>
+                    <b>4. Gestion des Déchets :</b> Mettre en place des programmes de recyclage et de réduction des déchets, 
+                    ainsi que des opérations de nettoyage dans les espaces publics.
+                </p>
+                <p>
+                    <b>5. Agriculture Durable :</b> Promouvoir des pratiques agricoles durables et respectueuses de 
+                    l'environnement, comme l'agriculture biologique.
+                </p>
+                <p>
+                    <b>6. Plaidoyer et Lobbying :</b> Travailler avec les gouvernements et les entreprises pour influencer 
+                    les politiques environnementales et promouvoir des lois favorables à l'écologie.
+                </p>
+                <p>
+                    <b>7. Évaluation de l'Impact Environnemental :</b> Réaliser des études et des évaluations pour 
+                    mesurer l'impact des projets sur l'environnement et proposer des améliorations.
+                </p>
+                <p>
+                    <b>8. Mobilisation Communautaire :</b> Encourager la participation des citoyens à des projets écologiques, 
+                    comme des jardins communautaires ou des initiatives de reforestation.
+                </p>
+                <p>
+                    <b>9. Mobilisation des constructions durables :</b> La mobilisation des constructions durables implique 
+                    sensibilisation, soutien financier, collaboration entre acteurs, formation professionnelle et intégration 
+                    de normes écologiques pour promouvoir des bâtiments respectueux de l'environnement et économes en ressources.
+                </p>
+            </div>
+            <div class = "row row-cols-1 row-cols-md-4 g-4 justify-content-center text-center my-3">
+                <div class = "col">
+                    <img src = {% static "images/about_health_picture.jpg" %} class = "w-100" alt = "About health picture" />
+                </div>
+                <div class = "col">
+                    <img src = {% static "images/about_building_picture.jpg" %} class = "w-100" alt = "About building picture" />
+                </div>
+                <div class = "col">
+                    <img src = {% static "images/about_agriculture_picture.jpg" %} class = "w-100" alt = "About agriculture picture" />
+                </div>
+                <div class = "col">
+                    <img src = {% static "images/about_fertilizer_picture.jpg" %} class = "w-100" alt = "About fertilizer picture" />
+                </div>
+                <div class = "col">
+                    <img src = {% static "images/about_renewable_picture.jpg" %} class = "w-100" alt = "About renewable picture" />
+                </div>
+                <div class = "col">
+                    <img src = {% static "images/about_cosmetic_picture.jpg" %} class = "w-100" alt = "About cosmetic picture" />
+                </div>
+                <div class = "col">
+                    <img src = {% static "images/about_catering_picture.jpg" %} class = "w-100" alt = "About catering picture" />
+                </div>
+                <div class = "col">
+                    <img src = {% static "images/about_breeding_picture.jpg" %} class = "w-100" alt = "About breeding picture" />
+                </div>
+            </div>
+            <div class = "row row-cols-1 row-cols-md-2 g-4 justify-content-center text-center my-3">
+                <div class = "col">
+                    <h3>Nos activités</h3>
+                    <p>Agir Vie Verte, un fervent défenseur de l’écologie, offre une assistance spécialisée dans l’agriculture durable et la protection de l'environnement. nous nous démarquos par nos projets innovants, notamment la rénovation et l'équipement des écoles même dans les zones les plus réculées dans un esprit de développement durable et de sensibilisation écologique.</p>
+                </div>
+                <div class = "col">
+                    <h3>Éducation</h3>
+                    <p class = "fs-4 fw-bold text-success">PLUS JAMAIS ÇA AU XXIÈME SIECLE DANS AUCUN PAYS SUR CETTE PLANETE</p>
+                    <p>L'association AGIR VIE VERTE s'organise pour recycler, donner une nouvelle vie et équiper des écoles afin de donner aux apprenants un cadre d'études plus approprié, même dans les zones les plus réculées</p>
+                    <div id = "gallery-app"></div>
+                </div>
+            </div>
+            <p class = "fw-bold text-center">Changeons le monde, un geste écologique à la fois ! Rejoignez AGIR VIEVERTE dès aujourd'hui ! En rejoignant AGIR VIE VERTE, vous participerez activement à des initiatives concrètes visant à protéger notre environnement contribuez à une cause qui nous concerne tous. Ensemble, nous pouvons réinventer l'éducation en Afrique tout en préservant notre environnement. Rejoignez-nous dans cette aventure et aidons ces enfants. avoir un meilleur avenir.</p>
+            <div class = "text-center">
+                <button type = "button" class = "btn btn-lg btn-primary text-light">Rejoignez-nous</button>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

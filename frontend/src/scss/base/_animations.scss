@@ -1,0 +1,66 @@
+// -----------------------------------------------------------------------------
+// This file contains all @keyframes declarations, if any.
+// -----------------------------------------------------------------------------
+
+/* Fade-in effects
+   ========================================================================== */
+
+/**
+ * Fade-in top animation
+ */
+@keyframes fade-in-top {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/**
+ * Fade-in left animation
+ */
+@keyframes fade-in-left {
+  0% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/**
+ * Fade-in right animation
+ */
+@keyframes fade-in-right {
+  0% {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/**
+ * Fade-in bottom animation
+ */
+@keyframes fade-in-bottom {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

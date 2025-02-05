@@ -1,0 +1,10 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the main content layout of the site/application.
+// -----------------------------------------------------------------------------
+
+@import "../abstracts/variables";
+
+#content {
+  min-height: calc(100vh - $footer-height);
+  padding-top: $header-height + $index-section-padding;
+}

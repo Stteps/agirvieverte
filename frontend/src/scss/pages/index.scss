@@ -1,0 +1,46 @@
+@import "../abstracts/variables";
+
+#content {
+  min-height: 100vh;
+  padding-top: 0;
+}
+
+#landing {
+  text-shadow: 1px 1px 1px rgb(0 0 0 / 50%);
+}
+
+#landing-banner {
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  inset: 0;
+}
+
+.index-section {
+  min-height: 100vh;
+  padding-top: $header-height + $index-section-padding;
+}
+
+.swiper {
+  width: 100%;
+  height: 100vh;
+  max-height: 100vh;
+  position: relative;
+}
+
+.swiper-slide {
+  /* Center slide text vertically */
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: $primary-color;
+  bottom: 0
+}
