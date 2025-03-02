@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load i18n %}
+
+{% load wagtailcore_tags wagtailimages_tags %}
+{% load render_bundle from webpack_loader %}
+
+{% block title %}{{ page.title }}{% endblock title %}
+
+{% block specific_styles %}
+    {% render_bundle 'blog' 'css' %}
+{% endblock specific_styles %}
+
+{% comment %} {% block specific_scripts %}
+    {% render_bundle 'blog' 'js' %}
+{% endblock specific_scripts %} {% endcomment %}
+
+{% block content %}
+    <div class = "text-center text-light py-5 position-relative" id = "about-banner" style = "background-image: url({{ page.banner.file.url }});">
+        <div class = "backdrop-filter position-absolute top-0 bottom-0 start-0 end-0"></div>
+        <h1>{{ page.title }}</h1>
+    </div>
+    <div class = "bg-white py-5">
+        <div class = "container">
+            <div class = "row text-center text-light fs-3">
+                {% for article in page.get_children %}
+                        {% if forloop.first %}
+                            <div class = "col-md-12 p-3">
+                                <div class = "blog-thumbnail position-relative p-0" style="background: center / cover no-repeat url({{ article.specific.image.file.url }});">
+                                    <div class = "position-absolute w-100 bottom-0 py-3" style="background: rgba(255, 255, 255, 0.5);">
+                                        {{ article.specific.title }}
+                                        <small class = "d-block fs-5">{{ article.specific.date }}</small>
+                                    </div>
+                                    <a href="{{ article.specific.url }}" class="stretched-link"></a>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class = "col-md-4 p-3">
+                                <div class = "blog-thumbnail position-relative p-0" style="background: center / cover no-repeat url({{ article.specific.image.file.url }});">
+                                    <div class = "position-absolute w-100 bottom-0 py-3" style="height: 150px; background: rgba(255, 255, 255, 0.5);">
+                                        {{ article.specific.title }}
+                                        <small class = "d-block fs-5">{{ article.specific.date }}</small>
+                                    </div>
+                                    <a href="{{ article.specific.url }}" class="stretched-link"></a>
+                                </div>
+                            </div>
+                        {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock content %}

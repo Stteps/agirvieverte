@@ -1,8 +1,19 @@
 #blog-banner {
-  background-image: url("../../assets/images/blog_banner.jpg");
+  // background-image: url("../../assets/images/blog_banner.jpg");
   text-shadow: 1px 1px 2px black;
 }
 
 #blog-banner .backdrop-filter {
   backdrop-filter: grayscale(50%);
+}
+
+.blog-thumbnail {
+  position: relative;
+  padding: 0;
+  height: 350px;
+  transition: all linear .2s; 
+}
+
+.blog-thumbnail:hover {
+  transform: scale(1.05);
 }

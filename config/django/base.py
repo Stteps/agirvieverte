@@ -18,18 +18,30 @@ LOCAL_APPS = [
     "app.api.apps.ApiConfig",
     "app.users.apps.UsersConfig",
     "app.emails.apps.EmailsConfig",
+    "app.cms.apps.CmsConfig",
     "app.core.apps.CoreConfig",
-    "app.blog.apps.BlogConfig",
 ]
 
 THIRD_PARTY_APPS = [
     "rest_framework",
     "webpack_loader",
-    "markdownify.apps.MarkdownifyConfig",  # For template tags
     "daphne",  # Django channels for asynchronous requests
     "corsheaders",
-    "constance",  # Global dynamic preferences
-    "constance.backends.database",
+    "wagtail.contrib.forms",
+    "wagtail.contrib.redirects",
+    "wagtail.contrib.settings",
+    "wagtail.contrib.simple_translation",
+    "wagtail.embeds",
+    "wagtail.sites",
+    "wagtail.users",
+    "wagtail.snippets",
+    "wagtail.documents",
+    "wagtail.images",
+    "wagtail.search",
+    "wagtail.admin",
+    "wagtail",
+    "modelcluster",
+    "taggit",
     "django_cleanup.apps.CleanupConfig",  # TODO: Issue with django-cleanup for multiple instances sharing file
 ]
 
@@ -154,9 +166,8 @@ from config.settings.celery import *  # noqa
 from config.settings.channels import *  # noqa
 from config.settings.cors import *  # noqa
 from config.settings.email_sending import *  # noqa
-from config.settings.markdownify import *  # noqa
+from config.settings.wagtail import *  # noqa
 from config.settings.webpack import *  # noqa
-from config.settings.constance import *  # noqa
 
 
 from config.settings.debug_toolbar.settings import *  # noqa

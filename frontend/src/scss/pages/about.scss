@@ -1,8 +1,34 @@
+@import "../abstracts/variables";
+
 #about-banner {
-  background-image: url("../../assets/images/about_banner.jpg");
+  // background-image: url("../../assets/images/about_banner.jpg");
   text-shadow: 1px 1px 2px black;
 }
 
 #about-banner .backdrop-filter {
   backdrop-filter: grayscale(50%);
+}
+
+// .swiper {
+//   width: 100%;
+//   height: 100vh;
+//   max-height: 100vh;
+//   position: relative;
+// }
+
+// .swiper-slide {
+//   /* Center slide text vertically */
+//   display: flex;
+//   -webkit-box-pack: center;
+//   -ms-flex-pack: center;
+//   justify-content: center;
+//   -webkit-box-align: center;
+//   -ms-flex-align: center;
+//   align-items: center;
+// }
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: $primary-color;
+  bottom: 0
 }

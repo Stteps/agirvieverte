@@ -27,6 +27,7 @@
       "__webpack_public_path__": "readonly",
       "__webpack_hash__": "readonly",
       "LANDING_BANNER": "readonly",
-      "PROJECTS": "readonly"
+      "PROJECTS": "readonly",
+      "EDUCATION_GALLERY_PICTURES": "readonly"
     }
   }

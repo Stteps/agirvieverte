@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load i18n %}
+
+{% load wagtailcore_tags wagtailimages_tags %}
+{% load render_bundle from webpack_loader %}
+
+{% block title %}{{ page.title }}{% endblock title %}
+
+{% block specific_styles %}
+    {% render_bundle 'blog' 'css' %}
+{% endblock specific_styles %}
+
+{% comment %} {% block specific_scripts %}
+    {% render_bundle 'blog' 'js' %}
+{% endblock specific_scripts %} {% endcomment %}
+
+{% block content %}
+    <div class = "bg-white py-5">
+        <div class = "text-center">
+            <h1>{{ page.title }}</h1>
+            <small class = "text-muted">{{ page.date }}</small>
+            <p class = "fst-italic my-3">{{ page.intro }}</p>
+            <div class = "bg-dark">
+                {% image page.image fill-800x350 class="d-block my-3 mx-auto" %}
+            </div>
+        </div>
+        <div class = "container">
+            {{ page.body|richtext }}
+        </div>
+    </div>    
+{% endblock content %}

@@ -7,8 +7,8 @@ ENV PYTHONUNBUFFERED 1
 
 # CREATING GROUP AND USER FOR SETTING APPROPRIATE PERMISSIONS OVER THE APP
 # Note: Some programs require home dir write access, so we create a home dir for the user
-RUN addgroup --system --gid 1001 app  \
-    && adduser --system --ingroup app --uid 1001 --home=/home/app app
+RUN addgroup --system --gid 1000 app  \
+    && adduser --system --ingroup app --uid 1000 --home=/home/app app
 
 # INSTALLING OS-LEVEL DEPENDENCIES
 # Note: We install dependencies then clean the install to reduce image size

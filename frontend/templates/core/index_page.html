@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% load i18n %}
+
+{% load wagtailcore_tags wagtailimages_tags %}
+{% load render_bundle from webpack_loader %}
+
+{% block title %}{% endblock title %}
+
+{% block specific_styles %}
+    {% render_bundle 'index' 'css' %}
+{% endblock specific_styles %}
+
+{% block specific_scripts %}
+    <script>
+        {% autoescape off %}
+            const LANDING_BANNER = "{{ page.landing_picture.file.url }}"
+            const PROJECTS = {{ projects }}
+        {% endautoescape %}
+    </script>
+
+    {% render_bundle 'index' 'js' %}
+{% endblock specific_scripts %}
+
+{% block content %}
+    <div class = "min-vh-100">
+        <div class = "index-section d-flex" id = "landing">
+            <div class = "container d-flex flex-column justify-content-evenly">
+                <div class = "text-light mx-auto p-3">
+                    <h1>Agir Vie Verte</h1>
+                    <p class = "fs-5">{{ page.landing_text|richtext }}</p>
+                </div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+    <div class = "bg-white py-3">
+        <div class = "container py-3">
+            <h3 class = "text-center">Notre expertise</h3>
+            <div class = "border border-3 border-primary mx-auto mt-2 mb-3 w-25"></div>
+            <div class = "row row-cols-1 row-cols-md-4 g-4 justify-content-center text-center my-3">
+                {% for item in page.expertise.all %}
+                    <div class = "col">
+                        <div class = "card rounded bg-light h-100">
+                            <img src = {{ item.image.file.url }} class = "card-img-top" alt = {{ item.image.caption }}>
+                            <div class = "card-body">
+                                <h5 class = "card-title fw-bold">{{ item.caption }}</h5>
+                                <p class = "card-text fs-5">{{ item.description|richtext }}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class = "py-3">
+        <div class = "container py-3">
+            <h3 class = "text-white fw-bold">Nos projets</h3>
+            <div class = "border border-3 border-primary mt-2 mb-3 w-25"></div>
+            <div class = "bg-dark bg-opacity-50 m-3 p-3 text-center">
+                <div id = "projects-app"></div>
+            </div>
+        </div>
+    </div> 
+    <div class = "p-3 text-center" style="background-color: #fafbed">
+        <h3 class = "fw-bold">{{ page.contact_title }}</h3>
+        <p>{{ page.contact_text|richtext }}</p>
+        <button class = "btn btn-lg btn-primary text-white my-3 px-5"><i class="bi bi-telephone-fill"></i>&nbsp;{{ page.contact_button }}</button>
+    </div>
+{% endblock content %}

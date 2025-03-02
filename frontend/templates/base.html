@@ -1,6 +1,7 @@
 {% load static %}
 
 {% load i18n %}
+{% load wagtailcore_tags %}
 {% get_language_info_list for LANGUAGES as languages %}
 
 {% load render_bundle from webpack_loader %}
@@ -13,7 +14,7 @@
         <meta name = 'viewport' content = "width = device-width, initial-scale = 1">
 
         <title>
-            {% url 'core:index' as home_url %}
+            {% slugurl index as home_url %}
             {% if request.path != home_url %}
                 {% block title %}{% endblock title %}&nbsp;-&nbsp;
             {% endif %}           
@@ -30,12 +31,12 @@
         <div>
             <!-- HEADER SECTION -->
             <div id = "header">
-                {% url 'core:index' as index_url %}
-                {% url 'core:about' as about_url %}
-                {% url 'blog:index' as blog_url %}
+                {% slugurl 'index' as index_url %}
+                {% slugurl 'about' as about_url %}
+                {% slugurl 'blog' as blog_url %}
                 <nav class="navbar navbar-expand-lg shadow fixed-top {% if request.path == index_url %}opacity-0 navbar-dark{% else %}bg-white shadow{% endif %}">
                     <div class="container">
-                        <a class = "navbar-brand" href = "{% url 'core:index' %}#">
+                        <a class = "navbar-brand" href = "{{ index_url }}#">
                             <img src = "{% if request.path == index_url %}{% static "images/logo_dark.png" %}{% else %}{% static "images/logo.png" %}{% endif %}" height = "75">
                         </a>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,9 +53,9 @@
                                 <li class="nav-item mx-2">
                                     <a class="nav-link" aria-current="page" href="#">CONTACT</a>
                                 </li>
-                                <li class="nav-item mx-2">
+                                {% comment %} <li class="nav-item mx-2">
                                     <a class="nav-link" aria-current="page" href="#">BOUTIQUE</a>
-                                </li>
+                                </li> {% endcomment %}
                                 <li class="nav-item mx-2">
                                     <button class="nav-link btn btn-sm" type="button">
                                         <i class="bi bi-search"></i>
